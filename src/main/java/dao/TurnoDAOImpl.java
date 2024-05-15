@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TurnoDAOImp implements TurnoDAO {
+public class TurnoDAOImpl implements TurnoDAO {
     private Map<Integer, Turno> turnos;
 
-    public TurnoDAOImp() {
+    public TurnoDAOImpl() {
         turnos = new HashMap<>();
     }
 
@@ -34,7 +34,7 @@ public class TurnoDAOImp implements TurnoDAO {
     @Override
     public String verEstado(int id) {
         Turno turno = turnos.get(id);
-        boolean estado = turno.getEstado();
+        boolean estado = turno.isEstado();
         String result = null;
         if (estado) {
             result = "Turno finalizado";

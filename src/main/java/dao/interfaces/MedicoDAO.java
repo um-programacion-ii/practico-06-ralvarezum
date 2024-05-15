@@ -10,4 +10,5 @@ public interface MedicoDAO {
     List<Medico> listarMedicos();
     String eliminarMedico(int documento);
     String actualizarMedico(Medico medico);
+    String limpiarDatos();
 }

@@ -42,4 +42,10 @@ public class MedicoDAOImp implements MedicoDAO {
         medicos.put(medico.getDocumento(), medico);
         return "Medico actualizado con exito";
     }
+
+    @Override
+    public String limpiarDatos() {
+        medicos.clear();
+        return "Medicos eliminados con exito";
+    }
 }

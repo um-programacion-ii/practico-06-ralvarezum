@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class PacienteDAOImp implements PacienteDAO {
     private Map<Integer, Paciente> pacientes;
 
@@ -42,5 +41,11 @@ public class PacienteDAOImp implements PacienteDAO {
     public String actualizarPaciente(Paciente paciente) {
         pacientes.put(paciente.getDocumento(), paciente);
         return "Paciente actualizado con exito";
+    }
+
+    @Override
+    public String limpiarDatos() {
+        pacientes.clear();
+        return "Pacientes eliminados con exito";
     }
 }

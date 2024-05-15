@@ -10,4 +10,5 @@ public interface PacienteDAO {
     List<Paciente> listarPacientes();
     String eliminarPaciente(int documento);
     String actualizarPaciente(Paciente paciente);
+    String limpiarDatos();
 }

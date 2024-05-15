@@ -35,7 +35,7 @@ public class PedidoDAOImp implements PedidoDAO {
     @Override
     public String verEstado(int id) {
         Pedido pedido = pedidos.get(id);
-        boolean estado = pedido.getEstado();
+        boolean estado = pedido.isEstado();
         String result = null;
         if (estado) {
             result = "Pedido finalizado";
@@ -50,5 +50,11 @@ public class PedidoDAOImp implements PedidoDAO {
     public Medicamento mostrarMedicamento(int id) {
         Pedido pedido = pedidos.get(id);
         return pedido.getMedicamento();
+    }
+
+    @Override
+    public String limpiarDatos() {
+        pedidos.clear();
+        return "Pedidos eliminados con exito";
     }
 }

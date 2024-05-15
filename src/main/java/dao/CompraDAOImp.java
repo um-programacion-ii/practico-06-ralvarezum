@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class CompraDAOImp implements CompraDAO {
     private Map<Integer, Compra> compras;
 
@@ -35,7 +34,7 @@ public class CompraDAOImp implements CompraDAO {
     @Override
     public String verEstado(int id) {
         Compra compra = compras.get(id);
-        boolean estado = compra.getEstado();
+        boolean estado = compra.isEstado();
         String result = null;
         if (estado) {
             result = "Compra finalizada";
@@ -44,5 +43,11 @@ public class CompraDAOImp implements CompraDAO {
             result = "Compra en proceso";
         }
         return result;
+    }
+
+    @Override
+    public String limpiarDatos() {
+        compras.clear();
+        return "Compras eliminadas con exito";
     }
 }
