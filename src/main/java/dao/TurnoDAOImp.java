@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TurnoDAOImpl implements TurnoDAO {
+public class TurnoDAOImp implements TurnoDAO {
     private Map<Integer, Turno> turnos;
 
-    public TurnoDAOImpl() {
+    public TurnoDAOImp() {
         turnos = new HashMap<>();
     }
 
@@ -38,8 +38,7 @@ public class TurnoDAOImpl implements TurnoDAO {
         String result = null;
         if (estado) {
             result = "Turno finalizado";
-        }
-        else {
+        } else {
             result = "Turno en proceso";
         }
         return result;
