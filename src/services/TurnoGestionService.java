@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 
 public class TurnoGestionService {
-    
+
     private static TurnoGestionService instancia;
     private Contenedor contenedor;
 

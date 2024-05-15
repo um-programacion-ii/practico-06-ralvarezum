@@ -1,8 +1,8 @@
 package services;
 
 import dao.*;
-import dao.interfaces.*
-;
+import dao.interfaces.*;
+
 public class Contenedor {
 
     private static Contenedor instancia;
@@ -36,7 +36,6 @@ public class Contenedor {
         return instancia;
     }
 
-    // Getters para los DAOs
     public ObraSocialDAO getObraSocialDAO() {
         return obraSocialDAO;
     }
