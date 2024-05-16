@@ -18,7 +18,7 @@ public class RecetaDAOImp implements RecetaDAO {
     @Override
     public String agregarReceta(Receta receta) {
         recetas.put(receta.getId(), receta);
-        return "Receta agregada con exito";
+        return "Receta agregada con éxito";
     }
 
     @Override

@@ -1,0 +1,12 @@
+dao\RecetaDAOImpTest.class
+dao\TurnoDAOImpTest.class
+dao\MedicoDAOImpTest.class
+dao\EspecialidadDAOImpTest.class
+dao\MedicamentoDAOImpTest.class
+dao\ObraSocialDAOImpTest.class
+dao\CompraDAOImpTest.class
+services\AtencionMedicoServiceTest.class
+services\FarmaciaGestionServiceTest.class
+dao\PacienteDAOImpTest.class
+dao\PedidoDAOImpTest.class
+services\TurnoGestionServiceTest.class

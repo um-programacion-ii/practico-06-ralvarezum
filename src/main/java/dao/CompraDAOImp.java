@@ -47,6 +47,6 @@ public class CompraDAOImp implements CompraDAO {
     @Override
     public String limpiarDatos() {
         compras.clear();
-        return "Compras eliminadas con exito";
+        return "Compras eliminadas con éxito";
     }
 }

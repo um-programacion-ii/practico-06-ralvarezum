@@ -18,7 +18,7 @@ public class ObraSocialDAOImp implements ObraSocialDAO {
     @Override
     public String agregarObraSocial(ObraSocial obrasocial) {
         obrassociales.put(obrasocial.getNombre(), obrasocial);
-        return "Obra Social agregada con exito";
+        return "Obra Social agregada con éxito";
     }
 
     @Override
@@ -34,12 +34,12 @@ public class ObraSocialDAOImp implements ObraSocialDAO {
     @Override
     public String eliminarObraSocial(String nombre) {
         obrassociales.remove(nombre);
-        return "Obra Social eliminada con exito";
+        return "Obra Social eliminada con éxito";
     }
 
     @Override
     public String actualizarObraSocial(ObraSocial obrasocial) {
         obrassociales.put(obrasocial.getNombre(), obrasocial);
-        return "Obra Social actualizada con exito";
+        return "Obra Social actualizada con éxito";
     }
 }

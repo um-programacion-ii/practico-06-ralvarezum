@@ -18,7 +18,7 @@ public class PacienteDAOImp implements PacienteDAO {
     @Override
     public String agregarPaciente(Paciente paciente) {
         pacientes.put(paciente.getDocumento(), paciente);
-        return "Paciente agregado con exito";
+        return "Paciente agregado con éxito";
     }
 
     @Override
@@ -34,18 +34,18 @@ public class PacienteDAOImp implements PacienteDAO {
     @Override
     public String eliminarPaciente(int documento) {
         pacientes.remove(documento);
-        return "Paciente eliminado con exito";
+        return "Paciente eliminado con éxito";
     }
 
     @Override
     public String actualizarPaciente(Paciente paciente) {
         pacientes.put(paciente.getDocumento(), paciente);
-        return "Paciente actualizado con exito";
+        return "Paciente actualizado con éxito";
     }
 
     @Override
     public String limpiarDatos() {
         pacientes.clear();
-        return "Pacientes eliminados con exito";
+        return "Pacientes eliminados con éxito";
     }
 }

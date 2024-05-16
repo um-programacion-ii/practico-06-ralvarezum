@@ -18,7 +18,7 @@ public class EspecialidadDAOImp implements EspecialidadDAO {
     @Override
     public String agregarEspecialidad(Especialidad especialidad) {
         especialidades.put(especialidad.getNombre(), especialidad);
-        return "Especialidad agregada con exito";
+        return "Especialidad agregada con éxito";
     }
 
     @Override
@@ -34,12 +34,12 @@ public class EspecialidadDAOImp implements EspecialidadDAO {
     @Override
     public String eliminarEspecialidad(String nombre) {
         especialidades.remove(nombre);
-        return "Especialidad eliminada con exito";
+        return "Especialidad eliminada con éxito";
     }
 
     @Override
     public String actualizarEspecialidad(Especialidad especialidad) {
         especialidades.put(especialidad.getNombre(), especialidad);
-        return "Especialidad actualizada con exito";
+        return "Especialidad actualizada con éxito";
     }
 }

@@ -19,7 +19,7 @@ public class PedidoDAOImp implements PedidoDAO {
     @Override
     public String agregarPedido(Pedido pedido) {
         pedidos.put(pedido.getId(), pedido);
-        return "Pedido agregado con exito";
+        return "Pedido agregado con éxito";
     }
 
     @Override
@@ -39,8 +39,7 @@ public class PedidoDAOImp implements PedidoDAO {
         String result = null;
         if (estado) {
             result = "Pedido finalizado";
-        }
-        else {
+        } else {
             result = "Pedido en proceso";
         }
         return result;
@@ -55,6 +54,6 @@ public class PedidoDAOImp implements PedidoDAO {
     @Override
     public String limpiarDatos() {
         pedidos.clear();
-        return "Pedidos eliminados con exito";
+        return "Pedidos eliminados con éxito";
     }
 }

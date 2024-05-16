@@ -7,11 +7,10 @@ import entidades.Turno;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class TurnoGestionService {
 
-    private static TurnoGestionService instancia;
-    private Contenedor contenedor;
+    private static volatile TurnoGestionService instancia;
+    private final Contenedor contenedor;
 
     private TurnoGestionService() {
         contenedor = Contenedor.getInstancia();
@@ -19,7 +18,11 @@ public class TurnoGestionService {
 
     public static TurnoGestionService getInstancia() {
         if (instancia == null) {
-            instancia = new TurnoGestionService();
+            synchronized (TurnoGestionService.class) {
+                if (instancia == null) {
+                    instancia = new TurnoGestionService();
+                }
+            }
         }
         return instancia;
     }
@@ -39,8 +42,12 @@ public class TurnoGestionService {
     }
 
     public String solicitarTurno(Paciente paciente, Medico medico, boolean conObraSocial) {
-        int id = contenedor.getTurnoDAO().listarTurnos().size() + 1;
+        int id = generarIdTurno();
         Turno turno = new Turno(id, paciente, medico, conObraSocial);
         return contenedor.getTurnoDAO().agregarTurno(turno);
+    }
+
+    private int generarIdTurno() {
+        return contenedor.getTurnoDAO().listarTurnos().size() + 1;
     }
 }

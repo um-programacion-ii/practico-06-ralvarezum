@@ -23,7 +23,6 @@ public class Farmacia {
         return stock;
     }
 
-    // Métodos para gestionar el stock
     public void agregarStock(Medicamento medicamento, int cantidad) {
         int cantidadActual = stock.getOrDefault(medicamento, 0);
         stock.put(medicamento, cantidadActual + cantidad);

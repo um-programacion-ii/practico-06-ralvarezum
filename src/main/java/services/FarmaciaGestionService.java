@@ -4,10 +4,10 @@ import entidades.*;
 
 public class FarmaciaGestionService {
 
-    private static FarmaciaGestionService instancia;
-    private Contenedor contenedor;
-    private Farmacia farmacia;
-    private Drogueria drogueria;
+    private static volatile FarmaciaGestionService instancia;
+    private final Contenedor contenedor;
+    private final Farmacia farmacia;
+    private final Drogueria drogueria;
 
     private FarmaciaGestionService() {
         contenedor = Contenedor.getInstancia();
@@ -17,45 +17,60 @@ public class FarmaciaGestionService {
 
     public static FarmaciaGestionService getInstancia() {
         if (instancia == null) {
-            instancia = new FarmaciaGestionService();
+            synchronized (FarmaciaGestionService.class) {
+                if (instancia == null) {
+                    instancia = new FarmaciaGestionService();
+                }
+            }
         }
         return instancia;
     }
 
     public String iniciarCompra(Paciente paciente, Receta receta) {
-        int idCompra = contenedor.getCompraDAO().listarCompras().size() + 1;
+        int idCompra = generarIdCompra();
         Compra compra = new Compra(idCompra, paciente, receta);
         return contenedor.getCompraDAO().agregarCompra(compra);
     }
 
     public String finalizarCompra(int idCompra) {
         Compra compra = contenedor.getCompraDAO().obtenerCompra(idCompra);
-        compra.setEstado(true);
-        reducirStockFarmacia(compra.getReceta());
-        return contenedor.getCompraDAO().verEstado(idCompra);
+        if (compra != null) {
+            compra.setEstado(true);
+            reducirStockFarmacia(compra.getReceta());
+            return contenedor.getCompraDAO().verEstado(idCompra);
+        }
+        return "Compra no encontrada";
     }
 
     public void reducirStockFarmacia(Receta receta) {
-        for (Medicamento medicamento : receta.getMedicamentos()) {
-            boolean suficiente = farmacia.hayStockSuficiente(medicamento);
-            if (suficiente) {
-                farmacia.reducirStock(medicamento);
-            } else {
-                solicitarMedicamentoADrogueria(medicamento);
-            }
+        receta.getMedicamentos().forEach(this::gestionarStockMedicamento);
+    }
+
+    public void gestionarStockMedicamento(Medicamento medicamento) {
+        if (farmacia.hayStockSuficiente(medicamento)) {
+            farmacia.reducirStock(medicamento);
+        } else {
+            solicitarMedicamentoADrogueria(medicamento);
         }
     }
 
     public void solicitarMedicamentoADrogueria(Medicamento medicamento) {
-        int idPedido = contenedor.getPedidoDAO().listarPedidos().size() + 1;
+        int idPedido = generarIdPedido();
         Pedido pedido = new Pedido(idPedido, medicamento, 5);
         contenedor.getPedidoDAO().agregarPedido(pedido);
-        // Lógica para finalizar el pedido
+
         int stock = drogueria.entregarStock(pedido);
         pedido.setEstado(true);
-        String estado = contenedor.getPedidoDAO().verEstado(idPedido);
-        System.out.println(estado);
-        // Actualizar el stock de la farmacia
+        System.out.println(contenedor.getPedidoDAO().verEstado(idPedido));
+
         farmacia.agregarStock(medicamento, stock);
+    }
+
+    private int generarIdCompra() {
+        return contenedor.getCompraDAO().listarCompras().size() + 1;
+    }
+
+    private int generarIdPedido() {
+        return contenedor.getPedidoDAO().listarPedidos().size() + 1;
     }
 }

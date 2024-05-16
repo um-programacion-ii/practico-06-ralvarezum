@@ -18,7 +18,7 @@ public class MedicoDAOImp implements MedicoDAO {
     @Override
     public String agregarMedico(Medico medico) {
         medicos.put(medico.getDocumento(), medico);
-        return "Medico agregado con exito";
+        return "Medico agregado con éxito";
     }
 
     @Override
@@ -34,18 +34,18 @@ public class MedicoDAOImp implements MedicoDAO {
     @Override
     public String eliminarMedico(int documento) {
         medicos.remove(documento);
-        return "Medico eliminado con exito";
+        return "Medico eliminado con éxito";
     }
 
     @Override
     public String actualizarMedico(Medico medico) {
         medicos.put(medico.getDocumento(), medico);
-        return "Medico actualizado con exito";
+        return "Medico actualizado con éxito";
     }
 
     @Override
     public String limpiarDatos() {
         medicos.clear();
-        return "Medicos eliminados con exito";
+        return "Medicos eliminados con éxito";
     }
 }

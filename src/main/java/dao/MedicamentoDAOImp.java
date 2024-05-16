@@ -18,7 +18,7 @@ public class MedicamentoDAOImp implements MedicamentoDAO {
     @Override
     public String agregarMedicamento(Medicamento medicamento) {
         medicamentos.put(medicamento.getId(), medicamento);
-        return "Medicamento agregado con exito";
+        return "Medicamento agregado con éxito";
     }
 
     @Override
@@ -34,12 +34,12 @@ public class MedicamentoDAOImp implements MedicamentoDAO {
     @Override
     public String eliminarMedicamento(int id) {
         medicamentos.remove(id);
-        return "Medicamento eliminado con exito";
+        return "Medicamento eliminado con éxito";
     }
 
     @Override
     public String actualizarMedicamento(Medicamento medicamento) {
         medicamentos.put(medicamento.getId(), medicamento);
-        return "Medicamento actualizado con exito";
+        return "Medicamento actualizado con éxito";
     }
 }
