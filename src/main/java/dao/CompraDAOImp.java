@@ -18,7 +18,7 @@ public class CompraDAOImp implements CompraDAO {
     @Override
     public String agregarCompra(Compra compra) {
         compras.put(compra.getId(), compra);
-        return "Compra agregada con exito";
+        return "Compra agregada con éxito";
     }
 
     @Override
@@ -38,8 +38,7 @@ public class CompraDAOImp implements CompraDAO {
         String result = null;
         if (estado) {
             result = "Compra finalizada";
-        }
-        else {
+        } else {
             result = "Compra en proceso";
         }
         return result;

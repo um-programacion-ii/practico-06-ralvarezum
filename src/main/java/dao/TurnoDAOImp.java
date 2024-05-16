@@ -18,7 +18,7 @@ public class TurnoDAOImp implements TurnoDAO {
     @Override
     public String agregarTurno(Turno turno) {
         turnos.put(turno.getId(), turno);
-        return "Turno agregado con exito";
+        return "Turno agregado con éxito";
     }
 
     @Override
